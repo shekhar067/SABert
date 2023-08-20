@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'SABert'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D086A0DEDE384DF1BE98FD939173D56E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3CCED8F4E85A4D4B881038B0E5A50D7B }}
