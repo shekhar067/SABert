@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        // Function to update sentiment text color based on prediction
+        function updateSentimentColor() {
+             var sentimentText = document.getElementById("sentiment-text");
+            if (sentimentText.innerText.includes("positive")) {
+                sentimentText.style.color = "green";
+                sentimentText.innerHTML += " 😃"; // Add a smiley emoji
+            } else if (sentimentText.innerText.includes("negative")) {
+                sentimentText.style.color = "red";
+                sentimentText.innerHTML += " 😞"; // Add a sad emoji
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Sentiment Analysis using BERT</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('getSentiment')}}" method="post">
+            <input type="text" name="statement" placeholder="Statement" required="required" />
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Get Sentiment</button>
+        </form>
+
+        <br>
+        <br>
+        <p id="sentiment-text">{{ SentimentText }}</p>
+        
+        <script>
+            // Call the updateSentimentColor function on page load
+            updateSentimentColor();
+        </script>
+    </div>
+</body>
+
+</html>
